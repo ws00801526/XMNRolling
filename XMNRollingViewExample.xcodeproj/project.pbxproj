@@ -45,6 +45,7 @@
 		97DBA90B1DEFF0320015E8B7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DBA90A1DEFF0320015E8B7 /* libz.tbd */; };
 		97DBA90E1DEFFDB30015E8B7 /* XMNRollingFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DBA90D1DEFFDB30015E8B7 /* XMNRollingFooterView.m */; };
 		97DBA9111DF006370015E8B7 /* rolling_footer_view_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DBA9101DF006370015E8B7 /* rolling_footer_view_arrow@2x.png */; };
+		97DBA9151DF03ED50015E8B7 /* XMNTestTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DBA9141DF03ED50015E8B7 /* XMNTestTableController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +115,8 @@
 		97DBA90C1DEFFDB20015E8B7 /* XMNRollingFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNRollingFooterView.h; sourceTree = "<group>"; };
 		97DBA90D1DEFFDB30015E8B7 /* XMNRollingFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMNRollingFooterView.m; sourceTree = "<group>"; };
 		97DBA9101DF006370015E8B7 /* rolling_footer_view_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rolling_footer_view_arrow@2x.png"; sourceTree = "<group>"; };
+		97DBA9131DF03ED50015E8B7 /* XMNTestTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNTestTableController.h; sourceTree = "<group>"; };
+		97DBA9141DF03ED50015E8B7 /* XMNTestTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMNTestTableController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 				973B071C1DEE9B7900B28513 /* AppDelegate.m */,
 				973B071E1DEE9B7900B28513 /* ViewController.h */,
 				973B071F1DEE9B7900B28513 /* ViewController.m */,
+				97DBA9131DF03ED50015E8B7 /* XMNTestTableController.h */,
+				97DBA9141DF03ED50015E8B7 /* XMNTestTableController.m */,
 				97DBA8C41DEFEBF10015E8B7 /* XMNTestRollingItem.h */,
 				97DBA8C51DEFEBF10015E8B7 /* XMNTestRollingItem.m */,
 				97DBA8C71DEFEFF70015E8B7 /* Vendor */,
@@ -370,6 +375,7 @@
 				97DBA8FF1DEFEFF80015E8B7 /* YYAnimatedImageView.m in Sources */,
 				973B07321DEE9BA100B28513 /* XMNRollingView.m in Sources */,
 				97DBA8F81DEFEFF70015E8B7 /* YYMemoryCache.m in Sources */,
+				97DBA9151DF03ED50015E8B7 /* XMNTestTableController.m in Sources */,
 				97DBA8FC1DEFEFF80015E8B7 /* UIButton+YYWebImage.m in Sources */,
 				97DBA8F71DEFEFF70015E8B7 /* YYKVStorage.m in Sources */,
 				973B07201DEE9B7900B28513 /* ViewController.m in Sources */,

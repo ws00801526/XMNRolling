@@ -537,7 +537,7 @@ static const NSInteger kXMNRollingDuration = 1.f;
     [self setup];
 }
 
-- (void)setDuration:(NSTimeInterval)duration {
+- (void)setDuration:(CGFloat)duration {
     
     if (_duration == duration) {
         return;

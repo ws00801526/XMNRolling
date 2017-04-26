@@ -8,8 +8,6 @@
 
 #import "XMNRolling.h"
 
-
-
 @interface XMNRollingFooterView : UICollectionReusableView
 
 @property (assign, nonatomic) XMNRollingFooterState state;
