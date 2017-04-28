@@ -11,7 +11,7 @@
 #import "XMNRollingItemViewCell.h"
 
 static const NSInteger kXMNRollingMaxSections = 20;
-static const NSInteger kXMNRollingDuration = 1.f;
+static const NSInteger kXMNRollingDuration = 5.f;
 
 @interface XMNRollingView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
