@@ -33,6 +33,12 @@
     return self;
 }
 
+- (void)layoutSubviews {
+    
+    [super layoutSubviews];
+    self.imageView.frame = CGRectMake(self.edgeInsets.left, self.edgeInsets.top, self.bounds.size.width - self.edgeInsets.left - self.edgeInsets.right, self.bounds.size.height - self.edgeInsets.top - self.edgeInsets.bottom);
+}
+
 #pragma mark - Method
 
 - (void)configItemViewWithData:(id<XMNRollingItem>)item {
@@ -64,7 +70,7 @@
         return;
     }
     _edgeInsets = edgeInsets;
-    self.imageView.frame = CGRectMake(edgeInsets.left, edgeInsets.top, self.bounds.size.width - self.edgeInsets.left - self.edgeInsets.right, self.bounds.size.height - self.edgeInsets.top - edgeInsets.bottom);
+    [self setNeedsLayout];
 }
 
 @end

@@ -67,6 +67,8 @@
         [imageView yy_setImageWithURL:[NSURL URLWithString:[item imagePath]] placeholder:placeholder options:YYWebImageOptionSetImageWithFadeAnimation completion:nil];
     }];
     
+    self.rollingViewXIB.edgeInsets = UIEdgeInsetsMake(100, 100, 50, 50);
+    
     /** 测试替换pageControl */
     UIPageControl *pageControl = [[UIPageControl alloc] init];
     pageControl.currentPageIndicatorTintColor = [UIColor redColor];
