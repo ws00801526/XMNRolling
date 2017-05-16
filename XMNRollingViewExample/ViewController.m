@@ -68,7 +68,7 @@
     }];
     
     self.rollingViewXIB.cornerRadius = 5.f;
-    self.rollingViewXIB.edgeInsets = UIEdgeInsetsMake(100, 100, 50, 50);
+//    self.rollingViewXIB.edgeInsets = UIEdgeInsetsMake(100, 100, 50, 50);
     
     /** 测试替换pageControl */
     UIPageControl *pageControl = [[UIPageControl alloc] init];
@@ -80,7 +80,7 @@
 //    self.rollingViewXIB.pageControl = nil;
     
     /** 测试 更改pageControlAlignment */
-    self.rollingViewXIB.pageControlAlignment = XMNRollingPageControlAlignmentCenter;
+    self.rollingViewXIB.pageControlAlignment = XMNRollingPageControlAlignmentLeft;
     
     /** 测试更改rollingView 滚动方向 */
 //    self.rollingViewXIB.rollingDirection = XMNRollingDirectionVertical;

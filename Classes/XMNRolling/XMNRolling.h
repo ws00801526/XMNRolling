@@ -94,6 +94,9 @@ typedef NS_ENUM(NSUInteger, XMNRollingFooterState) {
 @property (strong, nonatomic) UIColor   *pageIndicatorTintColor;
 @property (strong, nonatomic) UIColor   *currentPageIndicatorTintColor;
 
+@optional
+@property (assign, nonatomic) UIEdgeInsets edgeInsets;
+
 @end
 
 

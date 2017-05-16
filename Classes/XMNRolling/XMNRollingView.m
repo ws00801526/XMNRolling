@@ -220,6 +220,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     pageControl.currentPageIndicatorTintColor = [UIColor darkGrayColor];
     self.pageControl = (UIView<XMNRollingPageControl> *)pageControl;
+    self.pageControl.edgeInsets = UIEdgeInsetsMake(0, 15, 0, 15);
 }
 
 /**
@@ -231,15 +232,20 @@ static const NSInteger kXMNRollingDuration = 5.f;
         self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
         [self removeConstraints:self.pageControlConstraints];
         
+        UIEdgeInsets insets = UIEdgeInsetsZero;
+        if (self.pageControl && [self.pageControl respondsToSelector:@selector(edgeInsets)]) {
+            insets = [self.pageControl edgeInsets];
+        }
+        
         NSMutableArray<NSLayoutConstraint *> *constraints = [NSMutableArray array];
-        [constraints addObject:[NSLayoutConstraint constraintWithItem:_pageControl attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.f constant:0.f]];
+        [constraints addObject:[NSLayoutConstraint constraintWithItem:_pageControl attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.f constant:-insets.bottom]];
         
         switch (self.pageControlAlignment) {
             case XMNRollingPageControlAlignmentLeft:
-                [constraints addObject:[NSLayoutConstraint constraintWithItem:_pageControl attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.f constant:15.f]];
+                [constraints addObject:[NSLayoutConstraint constraintWithItem:_pageControl attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.f constant:insets.left]];
                 break;
             case XMNRollingPageControlAlignmentRight:
-                [constraints addObject:[NSLayoutConstraint constraintWithItem:_pageControl attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.f constant:-15.f]];
+                [constraints addObject:[NSLayoutConstraint constraintWithItem:_pageControl attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.f constant:-insets.right]];
                 break;
             default:
                 [constraints addObject:[NSLayoutConstraint constraintWithItem:_pageControl attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
@@ -553,6 +559,14 @@ static const NSInteger kXMNRollingDuration = 5.f;
     
     _footerView = footerView;
     self.footerSpace = self.rollingDirection == XMNRollingDirectionHorizontal ? CGRectGetWidth(footerView.bounds) : CGRectGetHeight(footerView.bounds);
+}
+
+- (void)setEdgeInsets:(UIEdgeInsets)edgeInsets {
+    
+    if (UIEdgeInsetsEqualToEdgeInsets(_edgeInsets, edgeInsets)) {
+        return;
+    }
+    _edgeInsets = edgeInsets;
 }
 
 #pragma mark - Getter
