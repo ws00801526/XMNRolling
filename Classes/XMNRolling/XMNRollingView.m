@@ -388,7 +388,6 @@ static const NSInteger kXMNRollingDuration = 5.f;
         return self.customItemViewBlock(collectionView, indexPath);
     }
     XMNRollingItemViewCell *itemCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"XMNRollingItemViewCell" forIndexPath:indexPath];
-   
     if (indexPath.item < self.items.count) { /** 防止数组越界 */
         
         id<XMNRollingItem> item = self.items[indexPath.item];
@@ -425,6 +424,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
     }
     self.tapBlock ? self.tapBlock(item, indexPath.item) : nil;
 }
+
 
 #pragma mark - UIScrollViewDelegate
 

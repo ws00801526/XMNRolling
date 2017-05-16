@@ -56,4 +56,15 @@
     }
 }
 
+#pragma mark - Setter
+
+- (void)setEdgeInsets:(UIEdgeInsets)edgeInsets {
+
+    if (UIEdgeInsetsEqualToEdgeInsets(_edgeInsets, edgeInsets)) {
+        return;
+    }
+    _edgeInsets = edgeInsets;
+    self.imageView.frame = CGRectMake(edgeInsets.left, edgeInsets.top, self.bounds.size.width - self.edgeInsets.left - self.edgeInsets.right, self.bounds.size.height - self.edgeInsets.top - edgeInsets.bottom);
+}
+
 @end

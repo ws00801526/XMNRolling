@@ -18,6 +18,9 @@ IB_DESIGNABLE
 @property (assign, nonatomic) IBInspectable CGFloat duration;
 @property (assign, nonatomic) XMNRollingMode rollingMode;
 @property (assign, nonatomic) XMNRollingDirection rollingDirection;
+/** 设置image边距 默认UIEdgeInsetZero */
+@property (assign, nonatomic) UIEdgeInsets edgeInsets;
+
 @property (strong, nonatomic) IBInspectable UIImage *placeholder;
 @property (copy, nonatomic)   NSArray<id<XMNRollingItem>> *items;
 
