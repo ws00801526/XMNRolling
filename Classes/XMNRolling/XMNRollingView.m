@@ -388,6 +388,8 @@ static const NSInteger kXMNRollingDuration = 5.f;
         return self.customItemViewBlock(collectionView, indexPath);
     }
     XMNRollingItemViewCell *itemCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"XMNRollingItemViewCell" forIndexPath:indexPath];
+    itemCell.imageView.layer.cornerRadius = self.cornerRadius;
+    itemCell.imageView.layer.masksToBounds = self.cornerRadius > .0f;
     itemCell.edgeInsets = self.edgeInsets;
     if (indexPath.item < self.items.count) { /** 防止数组越界 */
         

@@ -63,10 +63,11 @@
     
     /** 测试自定义加载图片功能 */
     [self.rollingViewXIB setLoadRemoteBlock:^(UIImageView *imageView, id<XMNRollingItem> item, UIImage *placeholder) {
-        
+
         [imageView yy_setImageWithURL:[NSURL URLWithString:[item imagePath]] placeholder:placeholder options:YYWebImageOptionSetImageWithFadeAnimation completion:nil];
     }];
     
+    self.rollingViewXIB.cornerRadius = 5.f;
     self.rollingViewXIB.edgeInsets = UIEdgeInsetsMake(100, 100, 50, 50);
     
     /** 测试替换pageControl */
