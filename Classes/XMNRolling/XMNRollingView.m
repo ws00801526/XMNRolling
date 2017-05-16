@@ -394,8 +394,10 @@ static const NSInteger kXMNRollingDuration = 5.f;
         return self.customItemViewBlock(collectionView, indexPath);
     }
     XMNRollingItemViewCell *itemCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"XMNRollingItemViewCell" forIndexPath:indexPath];
-    itemCell.imageView.layer.cornerRadius = self.cornerRadius;
-    itemCell.imageView.layer.masksToBounds = self.cornerRadius > .0f;
+    if (self.cornerRadius > .0f) {
+        itemCell.imageView.layer.cornerRadius = self.cornerRadius;
+        itemCell.imageView.layer.masksToBounds = YES;
+    }
     itemCell.edgeInsets = self.edgeInsets;
     if (indexPath.item < self.items.count) { /** 防止数组越界 */
         
@@ -661,6 +663,27 @@ static const NSInteger kXMNRollingDuration = 5.f;
 - (BOOL)shouldInfiniteLoop {
     
     return (self.rollingMode & XMNRollingModeInfiniteLoop) == XMNRollingModeInfiniteLoop && self.items && self.items.count >= 2;
+}
+
+@end
+
+
+#import <objc/runtime.h>
+
+@interface UIPageControl (XMNPageControl) <XMNRollingPageControl>
+
+@end
+
+@implementation UIPageControl (XMNPageControl)
+
+- (void)setEdgeInsets:(UIEdgeInsets)edgeInsets {
+    
+    objc_setAssociatedObject(self, @selector(edgeInsets), [NSValue valueWithUIEdgeInsets:edgeInsets], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIEdgeInsets)edgeInsets {
+    
+    return objc_getAssociatedObject(self, _cmd) ? [objc_getAssociatedObject(self, _cmd) edgeInsets] : UIEdgeInsetsZero;
 }
 
 @end
