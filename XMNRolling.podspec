@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "XMNRolling"
-  s.version      = "0.0.5"
+  s.version      = "0.0.7"
   s.summary      = "XMNRolling 无限滚动banner"
   s.homepage     = "https://github.com/ws00801526/XMNRolling"
   s.license      = "MIT"

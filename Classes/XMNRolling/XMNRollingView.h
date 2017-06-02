@@ -10,7 +10,7 @@
 
 IB_DESIGNABLE
 
-@interface XMNRollingView : UIView
+@interface XMNRollingView : UIImageView
 
 @property (assign, nonatomic, readonly) NSInteger currentIndex;
 

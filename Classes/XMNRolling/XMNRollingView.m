@@ -181,6 +181,8 @@ static const NSInteger kXMNRollingDuration = 5.f;
 
 - (void)setupUI {
     
+    self.userInteractionEnabled = YES;
+    
     [self setupCollectionView];
     [self setupPageControl];
     
