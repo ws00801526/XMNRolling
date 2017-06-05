@@ -181,8 +181,6 @@ static const NSInteger kXMNRollingDuration = 5.f;
 
 - (void)setupUI {
     
-    self.userInteractionEnabled = YES;
-    
     [self setupCollectionView];
     [self setupPageControl];
     
@@ -400,6 +398,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
         itemCell.imageView.layer.cornerRadius = self.cornerRadius;
         itemCell.imageView.layer.masksToBounds = YES;
     }
+    itemCell.shadowImage = self.shadowImage;
     itemCell.edgeInsets = self.edgeInsets;
     if (indexPath.item < self.items.count) { /** 防止数组越界 */
         

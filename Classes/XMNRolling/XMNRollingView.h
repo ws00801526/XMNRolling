@@ -10,7 +10,7 @@
 
 IB_DESIGNABLE
 
-@interface XMNRollingView : UIImageView
+@interface XMNRollingView : UIView
 
 @property (assign, nonatomic, readonly) NSInteger currentIndex;
 
@@ -22,7 +22,7 @@ IB_DESIGNABLE
 @property (assign, nonatomic) UIEdgeInsets edgeInsets;
 @property (assign, nonatomic) CGFloat cornerRadius;
 
-
+@property (strong, nonatomic) UIImage *shadowImage;
 @property (strong, nonatomic) IBInspectable UIImage *placeholder;
 @property (copy, nonatomic)   NSArray<id<XMNRollingItem>> *items;
 
