@@ -260,7 +260,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
 
 - (void)hanldeTimerAction {
     
-    NSLog(@"timer fired");
+//    NSLog(@"timer fired");
     BOOL animated = YES;
     NSIndexPath *nextIndexPath = [self  nextRollingIndexPath:&animated];
     
@@ -286,7 +286,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
     }
     NSInteger section = self.currentSection;
     NSInteger item = self.currentIndex;
-    NSLog(@"\n before scroll item :%d \n  section :%d \n",(int)item,(int)section);
+//    NSLog(@"\n before scroll item :%d \n  section :%d \n",(int)item,(int)section);
     item ++;
     if (item >= self.items.count) {
         item = 0;
@@ -306,7 +306,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
     
     if (item < self.items.count && section < [self.collectionView numberOfSections]) {
 
-        NSLog(@"\n after scroll item :%d \n  section :%d \n",(int)item,(int)section);
+//        NSLog(@"\n after scroll item :%d \n  section :%d \n",(int)item,(int)section);
         return [NSIndexPath indexPathForItem:item inSection:section];
     }
     return nil;
@@ -323,7 +323,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
     
     NSInteger section = self.currentSection;
     NSInteger item = self.currentIndex;
-    NSLog(@"\n before scroll item :%d \n  section :%d \n",(int)item,(int)section);
+//    NSLog(@"\n before scroll item :%d \n  section :%d \n",(int)item,(int)section);
     item --;
     if (item < 0) {
         item = self.items.count - 1;
@@ -341,7 +341,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
     
     if (item >= 0 && item < self.items.count && section >= 0 && section < [self.collectionView numberOfSections]) {
         
-        NSLog(@"\n after scroll item :%d \n  section :%d \n",(int)item,(int)section);
+//        NSLog(@"\n after scroll item :%d \n  section :%d \n",(int)item,(int)section);
         return [NSIndexPath indexPathForItem:item inSection:section];
     }
     return nil;
