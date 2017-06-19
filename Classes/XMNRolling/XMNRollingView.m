@@ -129,13 +129,6 @@ static const NSInteger kXMNRollingDuration = 5.f;
     }
     
     self.pageControl.numberOfPages = self.items.count;
-
-    if (self.shouldAuto) { /** 如果允许自动滚动 开启自动滚到定时器 */
-        self.timer = [NSTimer timerWithTimeInterval:self.duration target:self selector:@selector(hanldeTimerAction) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
-        [self.timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:self.duration]];
-        [self.timer fire];
-    }
     
     /** 增加emptyView配置 */
     if (!self.items || !self.items.count) {
@@ -152,6 +145,13 @@ static const NSInteger kXMNRollingDuration = 5.f;
         [self bringSubviewToFront:self.emptyView];
         [self bringSubviewToFront:self.pageControl];
         return;
+    }
+    
+    if (self.shouldAuto) { /** 如果允许自动滚动 开启自动滚到定时器 */
+        self.timer = [NSTimer timerWithTimeInterval:self.duration target:self selector:@selector(hanldeTimerAction) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+        [self.timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:self.duration]];
+        [self.timer fire];
     }
     
     if (self.shouldShowFooter) {
@@ -261,6 +261,11 @@ static const NSInteger kXMNRollingDuration = 5.f;
 - (void)hanldeTimerAction {
     
 //    NSLog(@"timer fired");
+    
+    if (!self.items || !self.items.count) {
+        return;
+    }
+    
     BOOL animated = YES;
     NSIndexPath *nextIndexPath = [self  nextRollingIndexPath:&animated];
     
