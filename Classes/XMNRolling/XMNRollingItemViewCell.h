@@ -10,6 +10,7 @@
 
 @interface XMNRollingItemViewCell : UICollectionViewCell <XMNRollingItemView>
 
+@property (weak, nonatomic) UIImage *shadowImage;
 @property (weak, nonatomic, readonly)   UIImageView *imageView;
 @property (assign, nonatomic) UIEdgeInsets edgeInsets;
 

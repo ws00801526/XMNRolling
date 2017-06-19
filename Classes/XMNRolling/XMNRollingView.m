@@ -129,13 +129,6 @@ static const NSInteger kXMNRollingDuration = 5.f;
     }
     
     self.pageControl.numberOfPages = self.items.count;
-
-    if (self.shouldAuto) { /** 如果允许自动滚动 开启自动滚到定时器 */
-        self.timer = [NSTimer timerWithTimeInterval:self.duration target:self selector:@selector(hanldeTimerAction) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
-        [self.timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:self.duration]];
-        [self.timer fire];
-    }
     
     /** 增加emptyView配置 */
     if (!self.items || !self.items.count) {
@@ -152,6 +145,13 @@ static const NSInteger kXMNRollingDuration = 5.f;
         [self bringSubviewToFront:self.emptyView];
         [self bringSubviewToFront:self.pageControl];
         return;
+    }
+    
+    if (self.shouldAuto) { /** 如果允许自动滚动 开启自动滚到定时器 */
+        self.timer = [NSTimer timerWithTimeInterval:self.duration target:self selector:@selector(hanldeTimerAction) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+        [self.timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:self.duration]];
+        [self.timer fire];
     }
     
     if (self.shouldShowFooter) {
@@ -180,8 +180,6 @@ static const NSInteger kXMNRollingDuration = 5.f;
 }
 
 - (void)setupUI {
-    
-    self.userInteractionEnabled = YES;
     
     [self setupCollectionView];
     [self setupPageControl];
@@ -262,7 +260,12 @@ static const NSInteger kXMNRollingDuration = 5.f;
 
 - (void)hanldeTimerAction {
     
-    NSLog(@"timer fired");
+//    NSLog(@"timer fired");
+    
+    if (!self.items || !self.items.count) {
+        return;
+    }
+    
     BOOL animated = YES;
     NSIndexPath *nextIndexPath = [self  nextRollingIndexPath:&animated];
     
@@ -288,7 +291,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
     }
     NSInteger section = self.currentSection;
     NSInteger item = self.currentIndex;
-    NSLog(@"\n before scroll item :%d \n  section :%d \n",(int)item,(int)section);
+//    NSLog(@"\n before scroll item :%d \n  section :%d \n",(int)item,(int)section);
     item ++;
     if (item >= self.items.count) {
         item = 0;
@@ -308,7 +311,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
     
     if (item < self.items.count && section < [self.collectionView numberOfSections]) {
 
-        NSLog(@"\n after scroll item :%d \n  section :%d \n",(int)item,(int)section);
+//        NSLog(@"\n after scroll item :%d \n  section :%d \n",(int)item,(int)section);
         return [NSIndexPath indexPathForItem:item inSection:section];
     }
     return nil;
@@ -325,7 +328,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
     
     NSInteger section = self.currentSection;
     NSInteger item = self.currentIndex;
-    NSLog(@"\n before scroll item :%d \n  section :%d \n",(int)item,(int)section);
+//    NSLog(@"\n before scroll item :%d \n  section :%d \n",(int)item,(int)section);
     item --;
     if (item < 0) {
         item = self.items.count - 1;
@@ -343,7 +346,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
     
     if (item >= 0 && item < self.items.count && section >= 0 && section < [self.collectionView numberOfSections]) {
         
-        NSLog(@"\n after scroll item :%d \n  section :%d \n",(int)item,(int)section);
+//        NSLog(@"\n after scroll item :%d \n  section :%d \n",(int)item,(int)section);
         return [NSIndexPath indexPathForItem:item inSection:section];
     }
     return nil;
@@ -400,6 +403,7 @@ static const NSInteger kXMNRollingDuration = 5.f;
         itemCell.imageView.layer.cornerRadius = self.cornerRadius;
         itemCell.imageView.layer.masksToBounds = YES;
     }
+    itemCell.shadowImage = self.shadowImage;
     itemCell.edgeInsets = self.edgeInsets;
     if (indexPath.item < self.items.count) { /** 防止数组越界 */
         

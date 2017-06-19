@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) id<XMNRollingItem> item;
 @property (weak, nonatomic)   UIImageView *imageView;
-
+@property (weak, nonatomic)   UIImageView *shadowView;
 
 @end
 
@@ -29,6 +29,15 @@
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self.contentView addSubview:self.imageView = imageView];
+        
+        /** 添加阴影效果 */
+//        CAShapeLayer *shadowLayer = [CAShapeLayer layer];
+//        shadowLayer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.imageView.bounds, -3.f, -3.f) cornerRadius:4.f].CGPath;
+//        shadowLayer.shadowColor = [UIColor colorWithRed:.0f green:.0f blue:.0f alpha:.5f].CGColor;
+//        shadowLayer.shadowOffset = CGSizeZero;
+//        shadowLayer.shadowOpacity = .1f;
+//        [self.layer insertSublayer:self.shadowLayer = shadowLayer atIndex:0];
+        
     }
     return self;
 }
@@ -37,6 +46,10 @@
     
     [super layoutSubviews];
     self.imageView.frame = CGRectMake(self.edgeInsets.left, self.edgeInsets.top, self.bounds.size.width - self.edgeInsets.left - self.edgeInsets.right, self.bounds.size.height - self.edgeInsets.top - self.edgeInsets.bottom);
+    if (self.shadowImage) {
+        self.shadowView.frame = CGRectInset(self.imageView.frame, -5.f, -5.f);
+    }
+    // self.shadowLayer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.imageView.frame, -2.f, -2.f) cornerRadius:4.f].CGPath;
 }
 
 #pragma mark - Method
@@ -71,6 +84,20 @@
     }
     _edgeInsets = edgeInsets;
     [self setNeedsLayout];
+}
+
+- (UIImageView *)shadowView {
+    if (!_shadowView) {
+        UIImageView *shadowView = [[UIImageView alloc] initWithFrame:self.bounds];
+        shadowView.clipsToBounds = YES;
+        shadowView.contentMode = UIViewContentModeScaleAspectFill;
+        shadowView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        shadowView.image = self.shadowImage;
+        [self.contentView addSubview:_shadowView = shadowView];
+        
+        [self.contentView bringSubviewToFront:self.imageView];
+    }
+    return _shadowView;
 }
 
 @end
