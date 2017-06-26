@@ -147,13 +147,6 @@ static const NSInteger kXMNRollingDuration = 5.f;
         return;
     }
     
-    if (self.shouldAuto) { /** 如果允许自动滚动 开启自动滚到定时器 */
-        self.timer = [NSTimer timerWithTimeInterval:self.duration target:self selector:@selector(hanldeTimerAction) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
-        [self.timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:self.duration]];
-        [self.timer fire];
-    }
-    
     if (self.shouldShowFooter) {
         self.collectionViewLayout.footerReferenceSize = CGSizeMake(40, self.collectionViewLayout.itemSize.height);
     }
@@ -177,6 +170,13 @@ static const NSInteger kXMNRollingDuration = 5.f;
                                                 animated:NO];
         });
     }
+    
+    if (self.shouldAuto) { /** 如果允许自动滚动 开启自动滚到定时器 */
+        self.timer = [NSTimer timerWithTimeInterval:self.duration target:self selector:@selector(hanldeTimerAction) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+        [self.timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:self.duration]];
+    }
+
 }
 
 - (void)setupUI {
