@@ -26,7 +26,7 @@
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
         imageView.clipsToBounds = YES;
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.contentMode = UIViewContentModeScaleToFill;
         imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self.contentView addSubview:self.imageView = imageView];
         
@@ -90,7 +90,7 @@
     if (!_shadowView) {
         UIImageView *shadowView = [[UIImageView alloc] initWithFrame:self.bounds];
         shadowView.clipsToBounds = YES;
-        shadowView.contentMode = UIViewContentModeScaleAspectFill;
+        shadowView.contentMode = UIViewContentModeScaleToFill;
         shadowView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         shadowView.image = self.shadowImage;
         [self.contentView addSubview:_shadowView = shadowView];
