@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "XMNRolling"
-  s.version      = "0.1.0"
+  s.version      = "0.2.0"
   s.summary      = "XMNRolling 无限滚动banner"
   s.homepage     = "https://github.com/ws00801526/XMNRolling"
   s.license      = "MIT"
@@ -17,7 +17,6 @@ Pod::Spec.new do |s|
   s.source_files  = "Classes/**/*.{h,m}"
   s.resource = 'Classes/**/*.png'
   s.ios.frameworks = 'UIKit'
-  s.dependency 'YYWebImage'
   s.requires_arc = true
-  s.platform = :ios, 8.0
+  s.platform = :ios, 10.0
 end
